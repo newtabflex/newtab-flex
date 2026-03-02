@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flex Redirect Settings</title>
+  <style>
+    /* --- BASE --- */
+    body {
+      background-color: #050505;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* --- AMBIENT LIGHT --- */
+    .ambient-light {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+    .light-1 {
+      top: -15%; left: -15%; width: 500px; height: 500px;
+      background: linear-gradient(45deg, #7c3aed, #2563eb, #7c3aed);
+      background-size: 200% 200%;
+      animation: float1 8s ease-in-out infinite, colorShift 6s ease-in-out infinite;
+    }
+    .light-2 {
+      bottom: -15%; right: -15%; width: 600px; height: 600px;
+      background: linear-gradient(45deg, #0891b2, #6366f1, #0891b2);
+      background-size: 200% 200%;
+      animation: float2 10s ease-in-out infinite, colorShift 8s ease-in-out infinite reverse;
+    }
+    .light-3 {
+      top: 30%; left: 50%; width: 350px; height: 350px;
+      background: linear-gradient(45deg, #8b5cf6, #06b6d4, #8b5cf6);
+      background-size: 200% 200%;
+      opacity: 0.5;
+      animation: float3 12s ease-in-out infinite, colorShift 10s ease-in-out infinite;
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, 30px) scale(1.1); }
+      50% { transform: translate(20px, 60px) scale(0.95); }
+      75% { transform: translate(-30px, 20px) scale(1.05); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(-40px, -30px) scale(1.05); }
+      50% { transform: translate(-60px, 20px) scale(1.1); }
+      75% { transform: translate(-20px, -40px) scale(0.95); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -40px) scale(1.15); }
+      66% { transform: translate(-30px, 30px) scale(0.9); }
+    }
+    @keyframes colorShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* --- CONTAINER --- */
+    .container {
+      background: rgba(18, 18, 18, 0.6);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(124, 58, 237, 0.15),
+        0 0 80px rgba(6, 182, 212, 0.1);
+      animation: containerGlow 4s ease-in-out infinite;
+
+      /* FIXED SIZE */
+      width: 380px;
+      height: 640px; 
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-sizing: border-box;
+      padding-top: 40px;
+      padding-bottom: 25px;
+    }
+    @keyframes containerGlow {
+      0%, 100% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(124, 58, 237, 0.15), 0 0 80px rgba(6, 182, 212, 0.1); }
+      50% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(124, 58, 237, 0.25), 0 0 100px rgba(6, 182, 212, 0.2); }
+    }
+
+    /* --- LANGUAGE BUTTONS --- */
+    .lang-wrapper {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      user-select: none;
+      z-index: 100;
+    }
+    .lang-btn {
+      cursor: pointer;
+      color: #555;
+      transition: all 0.2s;
+      min-width: 22px;
+      text-align: center;
+    }
+    .lang-btn:hover { color: #888; }
+    .lang-btn.active {
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    /* LOGO */
+        .main-logo {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 0;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(76, 217, 100, 0.2);
+    }
+
+
+        h2 {
+      margin: 0 0 6px 0;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .input-wrapper {
+      width: 302px;
+      text-align: center;
+      margin-bottom: 25px;
+      position: relative;
+    }
+        /* Header (large, white) */
+    .header-style {
+      display: block;
+      margin: 0 auto 10px auto;
+      font-size: 15px;
+      font-weight: 500;
+      color: #ffffff;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Description (narrow, matches warning block width) */
+    .desc-style {
+      display: block;
+      margin: 0 auto 16px auto;
+      
+      /* Left-aligned text */
+      text-align: left; 
+      
+      /* 300px matches the warning block width below */
+      width: 300px;  
+      
+      font-size: 10px; 
+      font-weight: 500;
+      color: #aaaaaa;
+      
+            line-height: 1.3; 
+      white-space: normal; 
+    }
+    body.lang-en .desc-style {
+      width: 260px;
+    }
+    input[type="text"] {
+
+      width: 100%;
+      height: 44px;
+      padding: 0 15px;
+      padding-right: 30px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: #fff;
+      font-family: monospace;
+      font-size: 13px;
+      box-sizing: border-box;
+      outline: none;
+      transition: all 0.2s;
+      text-align: left;
+    }
+    input[type="text"]:focus {
+      border-color: #6a11cb;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    
+    input::placeholder {
+      font-size: 13px;
+      opacity: 0.7;
+      letter-spacing: 0;
+    }
+
+
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      /* Offset for clear button due to variable label height */
+      bottom: 12px; 
+      top: auto;
+      cursor: pointer;
+      color: #555;
+      font-size: 16px;
+      display: none;
+    }
+    .clear-btn:hover { color: #fff; }
+
+    /* --- SAVE BUTTON --- */
+    button.save-btn {
+      width: 200px;
+      height: 44px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px -4px rgba(124, 58, 237, 0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+    }
+    button.save-btn:hover {
+      box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6);
+      transform: translateY(-2px);
+    }
+    button.save-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+        .status {
+      font-size: 13px;
+      font-weight: 700;
+      height: 25px;
+      line-height: 25px;
+      color: #4cd964;
+      opacity: 0;
+      transition: opacity 0.5s;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    /* --- FOOTER AREA --- */
+    .footer-area {
+      text-align: center;
+      width: 80%;
+      margin-top: 25px;
+    }
+
+    .warning-block {
+      font-size: 10px;
+      color: #ddd;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      text-align: left;
+      display: block;
+      width: 100%;
+      border: 1px solid #f1163d;
+      border-radius: 8px;
+      padding: 10px 12px;
+      box-sizing: border-box;
+    }
+    .warning-block b {
+      color: #ffa939;
+      display: block;
+      margin-bottom: 0; 
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      text-align: center;
+    }
+    .warning-block span {
+      white-space: pre-line;
+      display: block;
+      padding: 0 12px;
+    }
+
+
+    .warning-block .warning-subtitle {
+      text-transform: none;
+      font-size: 11px;
+      letter-spacing: 0;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+
+
+    /* DOWNLOAD LINK */
+    .download-link {
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: #4cd964;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 9px;
+      transition: all 0.2s;
+      border: 1px solid rgba(76, 217, 100, 0.3);
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+      border-radius: 8px;
+      background: rgba(76, 217, 100, 0.1);
+      box-sizing: border-box;
+    }
+     .download-link:hover {
+      background: rgba(76, 217, 100, 0.2);
+      transform: translateY(-1px);
+    }
+    body.lang-en .download-link {
+      margin-bottom: 21px;
+    }
+
+    /* PROMO LINK */
+    .promo-link {
+      font-size: 11px;
+      color: #00bcd4;
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+      border-bottom: 1px solid transparent;
+      display: inline-block;
+    }
+    .promo-link:hover {
+      opacity: 1;
+      border-bottom-color: rgba(0, 188, 212, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-light light-1"></div>
+  <div class="ambient-light light-2"></div>
+  <div class="ambient-light light-3"></div>
+
+  <div class="container">
+    <div class="lang-wrapper">
+      <div class="lang-btn" id="lang-en">EN</div>
+      <div class="lang-btn" id="lang-ru">RU</div>
+    </div>
+
+        <img src="icon.png" alt="Logo" class="main-logo">
+    <div id="status" class="status" data-i18n="saved">Saved!</div>
+
+    <h2 data-i18n="title">FLEX REDIRECT</h2>
+
+    <div class="input-wrapper">
+      <div id="header-text" class="header-style"></div>
+      
+      <div id="desc-text" class="desc-style"></div>
+
+      <input type="text" id="urlInput" placeholder="Paste path..." spellcheck="false">
+      <span class="clear-btn" id="clearBtn">×</span>
+    </div>
+
+    <button class="save-btn" id="saveBtn" data-i18n="btnSave">SAVE</button>
+
+    <div class="footer-area">
+            <div class="warning-block">
+        <b data-i18n="warningTitle">IMPORTANT: ENABLE FILE ACCESS!</b>
+        <b class="warning-subtitle" data-i18n="warningSubtitle">The extension will not work without it.</b>
+        <span data-i18n="warningText">
+          Right-click the Flex Redirect icon → "Manage extension" → enable the option:
+          • Chrome / Brave: "Allow access to file URLs"
+          • Opera / Opera GX: "Allow access to file URLs"
+          • Edge: "Allow access to file URLs"
+          • Others: Look for a similarly named toggle
+        </span>
+      </div>
+
+
+      <a href="https://newtabflex.com/go/?r=download" download class="download-link" data-i18n="downloadLink">
+        Download New Tab Flex ↓
+      </a>
+
+      <a href="https://newtabflex.com" target="_blank" class="promo-link" data-i18n="promoLink">
+        Official website &rarr;
+      </a>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
