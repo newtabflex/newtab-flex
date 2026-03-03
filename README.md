@@ -2,35 +2,54 @@
 **Author: Oleg Barte**
 
 ### The Chronicle of Digital Absurdity
-It is 2026. Tech giants have trillion-dollar budgets, yet when you open your browser, you see... garbage. You have been turned into a product. Your attention is sold before you even type a search query. You are forced to be a guest in your own browser.
+It is 2026. Tech giants have trillion-dollar budgets, yet when you 
+open your browser, you see... garbage. You have been turned into a 
+product. Your attention is sold before you even type a search query. 
+You are forced to be a guest in your own browser.
 
 **New Tab Flex changes the rules. We are stopping this sabotage.**
-This is a manifesto. A clean space with no ads, no "smart" feeds, and no hidden algorithms. A completely free start page that lives only on your device, respecting your privacy and your right to silence.
+This is a manifesto. A clean space with no ads, no "smart" feeds, 
+and no hidden algorithms. A completely free start page that lives 
+only on your device, respecting your privacy and your right to silence.
 
-### Key Features:
-- **Visual Order:** Turn chaos into structure. Simply drag and drop links and images to create your ideal dashboard.
-- **Total Customization:** You define the geometry. Adjust tile sizes, corner radius, transparency, and fonts. This is your personal design project.
-- **Three Independent Workspaces:** Spaces A, B, and C allow you to separate different contexts. Each space is configured individually and can look completely different.
-- **Absolute Privacy:** Everything works locally and lightning-fast. Your data belongs only to you and is stored exclusively inside your browser. No external servers.
-- **Unique Search Bar:** Instant one-click switching between Google, Yandex, and Perplexity with a custom switching logic.
+### Key Features
+- **Visual Order:** Drag and drop links, images, and stickers to 
+build your ideal dashboard. Turn chaos into structure.
+- **Total Customization:** You define the geometry. Adjust tile size, 
+corner radius, transparency, and fonts. This is your personal 
+design project.
+- **Three Independent Workspaces:** Spaces A, B, and C let you 
+separate work, rest, and private browsing. Each space has its own 
+layout, background, and settings.
+- **Absolute Privacy:** Everything runs locally and instantly. 
+Your data never leaves your device. No cloud, no tracking, 
+no external servers.
+- **Smart Search:** Switch between Google, Yandex, and Perplexity 
+with one click — without leaving the page.
 
-### The Bridge: Flex Redirect Extension
-To fully integrate the standalone HTML file into your browser, use the **Flex Redirect** extension (located in the `/FlexRedirect` folder). It serves as the essential link between the software and the browser.
+### Flex Redirect — Browser Integration
+New Tab Flex is a standalone HTML file that works in any desktop 
+browser. To make it open automatically on every new tab, use the 
+**Flex Redirect** companion extension for Chromium-based browsers 
+(Chrome, Brave, Edge, Opera, Opera GX).
 
-**What Flex Redirect does:**
-- **New Tab Integration:** Overrides the default browser behavior to open your local `newtab-flex.html` file every time you open a new tab.
-- **Remote Control:** Acting as a "bridge," it allows you to save any active website to Space A, B, or C instantly via the extension icon without leaving your current page.
-- **Quick Launch:** Provides instant access to open your dashboard in a new tab or a separate window.
-- **Context Management:** Manages the communication between your browsing sessions and your local workspace storage.
+👉 [Get Flex Redirect on Chrome Web Store](https://chromewebstore.google.com/detail/flex-redirect/jlechbbjnfdimkgpalfknndpjjnpcjjl)
 
-### License (Important)
-This is **Proprietary software** with available source code. The code is published strictly for transparency and security auditing.
-Without the author's written permission, modification, reverse engineering, redistribution, rebranding, and commercial use are strictly prohibited.
-Date: March 3, 2026.
+### License
+This is **proprietary software** with publicly available source code. 
+Published strictly for transparency and security review.
+Modification, redistribution, rebranding, and commercial use are 
+prohibited without the author's written permission.
 
-Full legal terms are available in the `LICENSE` file.
+Full terms: see `LICENSE` file. © Oleg Barte, 2026.
 
 ---
 
 ![Screenshot 1](1.png)
 ![Screenshot 2](2.png)
+![Screenshot 3](3.png)
+![Screenshot 4](4.png)
+![Screenshot 5](5.png)
+![Screenshot 6](6.png)
+![Screenshot 7](7.png)
+![Screenshot 8](8.png)
