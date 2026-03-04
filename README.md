@@ -62,3 +62,6 @@ Full terms: see `LICENSE` file. © Oleg Barte, 2026.
 ![Screenshot 14](14.png)
 ![Screenshot 15](15.png)
 ![Screenshot 16](16.png)
+![Screenshot 18](18.png)
+![Screenshot 19](19.png)
+![Screenshot 20](20.png)
